@@ -15,10 +15,11 @@ from .models import Receipt
 receipt_bp = Blueprint("receipt", __name__, template_folder="templates")
 
 PAYMENT_METHODS = {
-    "cash": "Cash",
-    "evc": "EVC",
-    "edahab": "Edahab",
-    "account": "Account",
+    "cash": "Efectivo (Cajas SAS)",
+    "card": "Tarjeta Bancaria (TPV)",
+    "spei": "Transferencia SPEI",
+    "oxxo": "Tiendas OXXO / Conveniencia",
+    "portal": "Portal en Línea SAS",
 }
 SCOPE_ALL_CUSTOMERS = "all_customers"
 SCOPE_SERVICE_AREA = "service_area"
@@ -131,7 +132,7 @@ def _currency_for_service_area(service_area_id: int | None) -> str:
         .order_by(Invoice.id.asc())
         .first()
     )
-    return row[0] if row and row[0] else "USD"
+    return row[0] if row and row[0] else "MXN"
 
 
 def _recent_receipts(service_area_id: int | None = None, customer_id: int | None = None):

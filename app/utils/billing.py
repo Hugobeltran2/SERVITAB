@@ -6,7 +6,7 @@ from app.Admin.blueprints.meter_reading.models import MeterReading
 
 
 def get_default_water_rate() -> float:
-    return float(current_app.config.get('WATER_RATE_PER_M3', 0.75))
+    return float(current_app.config.get('WATER_RATE_PER_M3', 12.50))
 
 
 def latest_reading_for_customer(customer_id: int, exclude_reading_id: int | None = None):

@@ -19,7 +19,7 @@ class Invoice(db.Model):
     last_read_m3 = db.Column(db.Numeric(12, 3), nullable=False)
     current_read_m3 = db.Column(db.Numeric(12, 3), nullable=False)
     used_water_m3 = db.Column(db.Numeric(12, 3), nullable=False)
-    rate_per_m3 = db.Column(db.Numeric(12, 3), nullable=False, default=0.75)
+    rate_per_m3 = db.Column(db.Numeric(12, 3), nullable=False, default=12.50)
     amount = db.Column(db.Numeric(12, 2), nullable=False)
     amount_paid = db.Column(db.Numeric(12, 2), nullable=False, default=0)
     balance_due = db.Column(db.Numeric(12, 2), nullable=False, default=0)
@@ -27,7 +27,7 @@ class Invoice(db.Model):
     issue_date = db.Column(db.Date, nullable=False, default=date.today)
     due_date = db.Column(db.Date, nullable=False)
     status = db.Column(db.String(16), nullable=False, default="unpaid")  # unpaid/partial/paid
-    currency = db.Column(db.String(8), nullable=True)
+    currency = db.Column(db.String(8), nullable=True, default="MXN")
 
     remarks = db.Column(db.String(255), nullable=True)
 

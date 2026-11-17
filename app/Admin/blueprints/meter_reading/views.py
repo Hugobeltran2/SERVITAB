@@ -60,7 +60,7 @@ def list_readings():
         per_page = 25
 
     query = _apply_filters(MeterReading.query).order_by(MeterReading.id.desc())
-    pagination = db.paginate(query, page=page, per_page=per_page, error_out=False, max_per_page=100)
+    pagination = query.paginate(page=page, per_page=per_page, error_out=False, max_per_page=100)
     items = pagination.items
 
     active_customers = Customer.query.filter(Customer.status == "active") \

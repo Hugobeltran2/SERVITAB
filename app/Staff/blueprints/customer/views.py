@@ -41,7 +41,7 @@ def list_customers():
         )
 
     query = query.order_by(Customer.id.desc())
-    pagination = db.paginate(query, page=page, per_page=per_page, error_out=False, max_per_page=100)
+    pagination = query.paginate(page=page, per_page=per_page, error_out=False, max_per_page=100)
 
     service_area_name = staff_user.service_area.area_name if staff_user and staff_user.service_area else None
 

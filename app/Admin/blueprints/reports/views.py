@@ -20,10 +20,11 @@ from app.extensions import db
 reports_bp = Blueprint("reports", __name__, template_folder="templates")
 
 PAYMENT_METHOD_LABELS = {
-    "cash": "Cash",
-    "evc": "EVC",
-    "edahab": "Edahab",
-    "account": "Account",
+    "cash": "Efectivo (Cajas SAS)",
+    "card": "Tarjeta Bancaria (TPV)",
+    "spei": "Transferencia SPEI",
+    "oxxo": "Tiendas OXXO / Conveniencia",
+    "portal": "Portal en Línea SAS",
 }
 
 REPORT_LINKS = [
@@ -292,13 +293,14 @@ def _collection_status_options(all_label="All outstanding statuses"):
     )
 
 
-def _payment_method_options(all_label="All payment methods"):
+def _payment_method_options(all_label="Todos los métodos de pago"):
     return _labeled_options(
         [
-            ("cash", "Cash"),
-            ("evc", "EVC"),
-            ("edahab", "Edahab"),
-            ("account", "Account"),
+            ("cash", "Efectivo (Cajas SAS)"),
+            ("card", "Tarjeta Bancaria (TPV)"),
+            ("spei", "Transferencia SPEI"),
+            ("oxxo", "Tiendas OXXO / Conveniencia"),
+            ("portal", "Portal en Línea SAS"),
         ],
         all_label,
     )

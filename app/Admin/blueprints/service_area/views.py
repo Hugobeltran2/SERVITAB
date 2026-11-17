@@ -38,8 +38,7 @@ def list_areas():
 
     query = _apply_filters(ServiceArea.query).order_by(ServiceArea.id.desc())
 
-    pagination = db.paginate(
-        query,
+    pagination = query.paginate(
         page=page,
         per_page=per_page,
         error_out=False,

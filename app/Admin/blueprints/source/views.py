@@ -60,8 +60,7 @@ def list_sources():
     query = _apply_filters(WaterSource.query).order_by(WaterSource.id.desc())
 
     # efficient server-side pagination
-    pagination = db.paginate(
-        query,
+    pagination = query.paginate(
         page=page,
         per_page=per_page,
         error_out=False,

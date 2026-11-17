@@ -193,8 +193,7 @@ def list_invoices():
         per_page = 25
 
     base_q = _apply_filters(Invoice.query)
-    pagination = db.paginate(
-        base_q.order_by(Invoice.id.desc()),
+    pagination = base_q.order_by(Invoice.id.desc()).paginate(
         page=page,
         per_page=per_page,
         error_out=False,

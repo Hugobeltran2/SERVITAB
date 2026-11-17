@@ -57,3 +57,11 @@ def register_cli_commands(app):
         """Create or promote a user to counter."""
         action = _upsert_user(username, password, "Counter")
         click.echo(f"Counter user '{username}' {action} successfully.")
+
+    @app.cli.command("seed-villahermosa")
+    @with_appcontext
+    def seed_villahermosa():
+        """Precargar infraestructura, plantas, rios, quimicos y usuarios de Villahermosa (SAS)."""
+        from app.seed_villahermosa import populate_villahermosa_data
+        populate_villahermosa_data()
+        click.echo("Base de datos de Villahermosa precargada correctamente.")

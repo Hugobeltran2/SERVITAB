@@ -56,7 +56,7 @@ def list_records():
         per_page = 25
 
     query = _apply_filters(TreatmentRecord.query).order_by(TreatmentRecord.id.desc())
-    pagination = db.paginate(query, page=page, per_page=per_page, error_out=False, max_per_page=100)
+    pagination = query.paginate(page=page, per_page=per_page, error_out=False, max_per_page=100)
     items = pagination.items
 
     # dropdowns (ACTIVE ONLY)

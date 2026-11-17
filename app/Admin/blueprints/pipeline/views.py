@@ -64,8 +64,7 @@ def list_pipelines():
     # base query + filters + order
     query = _apply_filters(Pipeline.query).order_by(Pipeline.id.desc())
 
-    pagination = db.paginate(
-        query,
+    pagination = query.paginate(
         page=page,
         per_page=per_page,
         error_out=False,

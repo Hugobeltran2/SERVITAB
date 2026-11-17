@@ -50,42 +50,48 @@ def admin_dashboard():
         .all()
     )
     invoice_status_order = ["issued", "unpaid", "partial", "paid"]
+    invoice_status_labels = {
+        "issued": "Emitidos",
+        "unpaid": "Pendientes",
+        "partial": "Parciales",
+        "paid": "Pagados",
+    }
     invoice_status_map = {
         status.lower(): count
         for status, count in invoice_status_rows
         if status
     }
     invoice_chart = {
-        "labels": [status.title() for status in invoice_status_order if invoice_status_map.get(status)],
+        "labels": [invoice_status_labels.get(status, status.title()) for status in invoice_status_order if invoice_status_map.get(status)],
         "values": [invoice_status_map.get(status, 0) for status in invoice_status_order if invoice_status_map.get(status)],
     }
 
     stats = [
         {
-            "label": "Total Customers",
+            "label": "Padrón de Usuarios",
             "value": _format_count(total_customers),
-            "note": f"{active_customers} active customers",
+            "note": f"{active_customers} contratos activos",
             "icon": "fa-solid fa-users",
             "variant": "blue",
         },
         {
-            "label": "Staff Members",
+            "label": "Personal Operativo",
             "value": _format_count(total_staff),
-            "note": f"{total_admins} admin account(s)",
+            "note": f"{total_admins} administradores",
             "icon": "fa-solid fa-user-gear",
             "variant": "cyan",
         },
         {
-            "label": "Revenue",
-            "value": f"{float(total_revenue or 0):,.2f}",
-            "note": "Collected from receipts",
+            "label": "Recaudación Total",
+            "value": f"${float(total_revenue or 0):,.2f} MXN",
+            "note": "Cobrado en cajas SERVITAB y bancos",
             "icon": "fa-solid fa-sack-dollar",
             "variant": "teal",
         },
         {
-            "label": "Invoices",
-            "value": _format_count(total_invoices),
-            "note": f"{unpaid_invoices} need attention",
+            "label": "Recibos por Cobrar",
+            "value": _format_count(unpaid_invoices),
+            "note": f"de {total_invoices} recibos emitidos",
             "icon": "fa-solid fa-file-invoice-dollar",
             "variant": "amber",
         },

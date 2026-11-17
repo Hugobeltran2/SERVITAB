@@ -83,7 +83,7 @@ def list_readings():
     service_area_id = current_staff_service_area_id()
 
     query = _apply_filters(MeterReading.query, service_area_id).order_by(MeterReading.id.desc())
-    pagination = db.paginate(query, page=page, per_page=per_page, error_out=False, max_per_page=100)
+    pagination = query.paginate(page=page, per_page=per_page, error_out=False, max_per_page=100)
 
     active_customers = []
     if service_area_id:

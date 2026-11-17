@@ -4,13 +4,13 @@
 <div class="dashboard-shell">
   <section class="d-flex flex-wrap justify-content-between align-items-center gap-2">
     <div>
-      <p class="dashboard-eyebrow text-dark mb-1">Water Supply Management System</p>
-      <h1 class="h3 fw-bold mb-0">Admin Dashboard</h1>
+      <p class="dashboard-eyebrow text-dark mb-1">SERVITAB &bull; Suministro Privado de Agua (Villahermosa)</p>
+      <h1 class="h3 fw-bold mb-0">Panel de Control Operativo</h1>
     </div>
     <div class="dashboard-actions">
-      <a href="{{ url_for('customer.list_customers') }}" class="btn btn-primary btn-sm">Customers</a>
-      <a href="{{ url_for('staff_account.list_staff') }}" class="btn btn-outline-primary btn-sm">Staff</a>
-      <a href="{{ url_for('invoice.list_invoices') }}" class="btn btn-outline-primary btn-sm">Invoices</a>
+      <a href="{{ url_for('customer.list_customers') }}" class="btn btn-primary btn-sm"><i class="fas fa-users me-1"></i> Padrón de Usuarios</a>
+      <a href="{{ url_for('treatment_record.list_records') }}" class="btn btn-outline-info btn-sm"><i class="fas fa-filter me-1"></i> Control PTAP</a>
+      <a href="{{ url_for('invoice.list_invoices') }}" class="btn btn-outline-primary btn-sm"><i class="fas fa-file-invoice-dollar me-1"></i> Recibos</a>
     </div>
   </section>
 
@@ -36,8 +36,8 @@
       <div class="dashboard-panel dashboard-panel--chart">
         <div class="panel-header">
           <div>
-            <h2>Billing overview</h2>
-            <p>Invoice status distribution in the system.</p>
+            <h2>Estado de la Facturación</h2>
+            <p>Distribución de estatus de recibos emitidos (MXN).</p>
           </div>
           <span class="panel-badge">Dynamic</span>
         </div>

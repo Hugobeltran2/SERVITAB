@@ -60,8 +60,7 @@ def list_tanks():
     # base query + filters + order
     query = _apply_filters(StorageTank.query).order_by(StorageTank.id.desc())
 
-    pagination = db.paginate(
-        query,
+    pagination = query.paginate(
         page=page,
         per_page=per_page,
         error_out=False,

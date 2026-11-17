@@ -415,8 +415,8 @@
           <div class="brand-lockup">
             <div class="brand-mark"><i class="fas fa-tint"></i></div>
             <div>
-              <p class="brand-name">Water Supply Management System</p>
-              <p class="brand-subtitle">Official customer invoice and payment summary</p>
+              <p class="brand-name">SERVITAB S.A. de C.V.</p>
+              <p class="brand-subtitle">Servicios y Suministros Privados de Agua &bull; Villahermosa, Tabasco</p>
             </div>
           </div>
           <div class="invoice-meta">
@@ -464,7 +464,7 @@
                 <td class="text-end metric">{{ '%.2f'|format(inv.last_read_m3 or 0) }}</td>
                 <td class="text-end metric">{{ '%.2f'|format(inv.current_read_m3 or 0) }}</td>
                 <td class="text-end metric">{{ '%.2f'|format(inv.used_water_m3 or 0) }}</td>
-                <td class="text-end metric" style="color:var(--accent);">{{ '%.2f'|format(inv.amount or 0) }} {{ inv.currency or 'USD' }}</td>
+                <td class="text-end metric" style="color:var(--accent);">{{ '%.2f'|format(inv.amount or 0) }} {{ inv.currency or 'MXN' }}</td>
               </tr>
             </tbody>
           </table>
@@ -474,15 +474,15 @@
           <div class="summary-lines">
             <div class="summary-line">
               <span class="label">Amount due</span>
-              <span class="value">{{ '%.2f'|format(inv.amount or 0) }} {{ inv.currency or 'USD' }}</span>
+              <span class="value">{{ '%.2f'|format(inv.amount or 0) }} {{ inv.currency or 'MXN' }}</span>
             </div>
             <div class="summary-line">
               <span class="label">Amount paid</span>
-              <span class="value">{{ '%.2f'|format(inv.amount_paid or 0) }} {{ inv.currency or 'USD' }}</span>
+              <span class="value">{{ '%.2f'|format(inv.amount_paid or 0) }} {{ inv.currency or 'MXN' }}</span>
             </div>
             <div class="summary-line total">
               <span class="label">Balance remaining</span>
-              <span class="value">{{ '%.2f'|format(inv.balance_due or 0) }} {{ inv.currency or 'USD' }}</span>
+              <span class="value">{{ '%.2f'|format(inv.balance_due or 0) }} {{ inv.currency or 'MXN' }}</span>
             </div>
           </div>
         </div>

@@ -80,7 +80,7 @@ def list_staff():
         per_page = 25
 
     query = _apply_filters(User.query).order_by(User.id.desc())
-    pagination = db.paginate(query, page=page, per_page=per_page, error_out=False, max_per_page=100)
+    pagination = query.paginate(page=page, per_page=per_page, error_out=False, max_per_page=100)
     service_areas, active_count = _user_form_context()
 
     return render_template(

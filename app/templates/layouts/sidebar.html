@@ -1,5 +1,5 @@
 ﻿<aside class="sidebar" id="sidebar">
-  <div class="brand">WSMS</div>
+  <div class="brand"><i class="fas fa-droplet text-info me-2"></i>SERVITAB</div>
   <nav class="nav">
     {% set role = (session.get('role') or '')|lower %}
     {% set current_endpoint = request.endpoint or '' %}
@@ -17,103 +17,103 @@
     {% set report_menu_open = current_endpoint in report_endpoints %}
 
     {% if role == 'staff' %}
-      <a href="{{ url_for('staff_meter_reading.list_readings') }}"><i class="fas fa-tachograph-digital"></i> Meter Readings</a>
-      <a href="{{ url_for('staff_main.staff_profile') }}"><i class="fas fa-id-card"></i> My Profile</a>
-      <a href="{{ url_for('auth.logout') }}"><i class="fas fa-sign-out-alt"></i> Logout</a>
+      <a href="{{ url_for('staff_meter_reading.list_readings') }}"><i class="fas fa-tachograph-digital"></i> Lecturas de Medidores</a>
+      <a href="{{ url_for('staff_main.staff_profile') }}"><i class="fas fa-id-card"></i> Mi Perfil</a>
+      <a href="{{ url_for('auth.logout') }}"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a>
     {% elif role == 'counter' %}
-      <a href="{{ url_for('receipt.list_receipts') }}"><i class="fas fa-file-invoice-dollar"></i> Receipts</a>
-      <a href="{{ url_for('auth.logout') }}"><i class="fas fa-sign-out-alt"></i> Logout</a>
+      <a href="{{ url_for('receipt.list_receipts') }}"><i class="fas fa-file-invoice-dollar"></i> Recibos y Cobro</a>
+      <a href="{{ url_for('auth.logout') }}"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a>
     {% else %}
-      <a href="{{ url_for('main.admin_dashboard') }}"><i class="fas fa-home"></i> Dashboard</a>
+      <a href="{{ url_for('main.admin_dashboard') }}"><i class="fas fa-gauge-high"></i> Panel de Control</a>
 
       <a href="#" class="has-submenu js-submenu-toggle">
         <i class="fas fa-water"></i>
-        <span>Source</span>
+        <span>Captación</span>
         <i class="fas fa-chevron-down nav-arrow"></i>
       </a>
       <div class="submenu">
-        <a href="{{ url_for('source.list_sources') }}" class="submenu-item">Water_source</a>
+        <a href="{{ url_for('source.list_sources') }}" class="submenu-item">Fuentes y Ríos</a>
       </div>
 
       <a href="#" class="has-submenu js-submenu-toggle">
         <i class="fas fa-filter"></i>
-        <span>Filtration</span>
+        <span>Potabilización</span>
         <i class="fas fa-chevron-down nav-arrow"></i>
       </a>
       <div class="submenu">
-        <a href="{{ url_for('treatment_record.list_records') }}" class="submenu-item">Filtration_Record</a>
-        <a href="{{ url_for('chemical.list_chemicals') }}" class="submenu-item">Chemical</a>
+        <a href="{{ url_for('treatment_record.list_records') }}" class="submenu-item">Registro de Calidad / PTAP</a>
+        <a href="{{ url_for('chemical.list_chemicals') }}" class="submenu-item">Químicos y Reactivos</a>
       </div>
 
       <a href="#" class="has-submenu js-submenu-toggle">
         <i class="fas fa-boxes-stacked"></i>
-        <span>Storage</span>
+        <span>Almacenamiento</span>
         <i class="fas fa-chevron-down nav-arrow"></i>
       </a>
       <div class="submenu">
-        <a href="{{ url_for('storage_tank.list_tanks') }}" class="submenu-item">Storage_tank</a>
+        <a href="{{ url_for('storage_tank.list_tanks') }}" class="submenu-item">Tanques y Cárcamos</a>
       </div>
 
       <a href="#" class="has-submenu js-submenu-toggle">
         <i class="fas fa-faucet"></i>
-        <span>Distribution</span>
+        <span>Distribución</span>
         <i class="fas fa-chevron-down nav-arrow"></i>
       </a>
       <div class="submenu">
-        <a href="{{ url_for('service_area.list_areas') }}" class="submenu-item">Service_area</a>
-        <a href="{{ url_for('pipeline.list_pipelines') }}" class="submenu-item">Pipeline</a>
+        <a href="{{ url_for('service_area.list_areas') }}" class="submenu-item">Sectores y Colonias</a>
+        <a href="{{ url_for('pipeline.list_pipelines') }}" class="submenu-item">Redes y Acueductos</a>
       </div>
 
       <a href="#" class="has-submenu js-submenu-toggle">
         <i class="fas fa-user-gear"></i>
-        <span>CRM</span>
+        <span>Padrón de Usuarios</span>
         <i class="fas fa-chevron-down nav-arrow"></i>
       </a>
       <div class="submenu">
-        <a href="{{ url_for('customer.list_customers') }}" class="submenu-item">Customer</a>
-        <a href="{{ url_for('meter.list_meters') }}" class="submenu-item">Meter</a>
-        <a href="{{ url_for('meter_reading.list_readings') }}" class="submenu-item">Meter_reading</a>
+        <a href="{{ url_for('customer.list_customers') }}" class="submenu-item">Usuarios / Contratos</a>
+        <a href="{{ url_for('meter.list_meters') }}" class="submenu-item">Medidores</a>
+        <a href="{{ url_for('meter_reading.list_readings') }}" class="submenu-item">Lecturas de Consumo</a>
       </div>
 
       <a href="#" class="has-submenu js-submenu-toggle">
         <i class="fas fa-file-invoice-dollar"></i>
-        <span>Billing</span>
+        <span>Facturación y Caja</span>
         <i class="fas fa-chevron-down nav-arrow"></i>
       </a>
       <div class="submenu">
-        <a href="{{ url_for('invoice.list_invoices') }}" class="submenu-item">Invoice</a>
-        <a href="{{ url_for('receipt.list_receipts') }}" class="submenu-item">Receipt</a>
+        <a href="{{ url_for('invoice.list_invoices') }}" class="submenu-item">Recibos de Agua</a>
+        <a href="{{ url_for('receipt.list_receipts') }}" class="submenu-item">Cobranza y Pagos</a>
       </div>
 
       <a href="#" class="has-submenu js-submenu-toggle {% if report_menu_open %}active{% endif %}">
         <i class="fas fa-chart-column"></i>
-        <span>Reports</span>
+        <span>Reportes e Indicadores</span>
         <i class="fas fa-chevron-down nav-arrow"></i>
       </a>
       <div class="submenu {% if report_menu_open %}open{% endif %}">
-        <a href="{{ url_for('reports.index') }}" class="submenu-item {% if current_endpoint == 'reports.index' %}active{% endif %}">Overview</a>
-        <a href="{{ url_for('reports.customers_report') }}" class="submenu-item {% if current_endpoint == 'reports.customers_report' %}active{% endif %}">Customer Report</a>
-        <a href="{{ url_for('reports.service_areas_report') }}" class="submenu-item {% if current_endpoint == 'reports.service_areas_report' %}active{% endif %}">Area Report</a>
-        <a href="{{ url_for('reports.meters_report') }}" class="submenu-item {% if current_endpoint == 'reports.meters_report' %}active{% endif %}">Meter Report</a>
-        <a href="{{ url_for('reports.readings_report') }}" class="submenu-item {% if current_endpoint == 'reports.readings_report' %}active{% endif %}">Reading Report</a>
-        <a href="{{ url_for('reports.invoices_report') }}" class="submenu-item {% if current_endpoint == 'reports.invoices_report' %}active{% endif %}">Invoice Report</a>
-        <a href="{{ url_for('reports.receipts_report') }}" class="submenu-item {% if current_endpoint == 'reports.receipts_report' %}active{% endif %}">Receipt Report</a>
-        <a href="{{ url_for('reports.revenue_report') }}" class="submenu-item {% if current_endpoint == 'reports.revenue_report' %}active{% endif %}">Revenue Report</a>
-        <a href="{{ url_for('reports.collections_report') }}" class="submenu-item {% if current_endpoint == 'reports.collections_report' %}active{% endif %}">Collection Report</a>
+        <a href="{{ url_for('reports.index') }}" class="submenu-item {% if current_endpoint == 'reports.index' %}active{% endif %}">Resumen General</a>
+        <a href="{{ url_for('reports.customers_report') }}" class="submenu-item {% if current_endpoint == 'reports.customers_report' %}active{% endif %}">Padrón de Usuarios</a>
+        <a href="{{ url_for('reports.service_areas_report') }}" class="submenu-item {% if current_endpoint == 'reports.service_areas_report' %}active{% endif %}">Reporte por Sectores</a>
+        <a href="{{ url_for('reports.meters_report') }}" class="submenu-item {% if current_endpoint == 'reports.meters_report' %}active{% endif %}">Parque de Medidores</a>
+        <a href="{{ url_for('reports.readings_report') }}" class="submenu-item {% if current_endpoint == 'reports.readings_report' %}active{% endif %}">Histórico de Lecturas</a>
+        <a href="{{ url_for('reports.invoices_report') }}" class="submenu-item {% if current_endpoint == 'reports.invoices_report' %}active{% endif %}">Emisión de Recibos</a>
+        <a href="{{ url_for('reports.receipts_report') }}" class="submenu-item {% if current_endpoint == 'reports.receipts_report' %}active{% endif %}">Reporte de Recaudación</a>
+        <a href="{{ url_for('reports.revenue_report') }}" class="submenu-item {% if current_endpoint == 'reports.revenue_report' %}active{% endif %}">Ingresos Totales</a>
+        <a href="{{ url_for('reports.collections_report') }}" class="submenu-item {% if current_endpoint == 'reports.collections_report' %}active{% endif %}">Cuentas por Cobrar / Cartera</a>
       </div>
 
       <a href="#" class="has-submenu js-submenu-toggle">
         <i class="fas fa-users-gear"></i>
-        <span>Administration</span>
+        <span>Administración</span>
         <i class="fas fa-chevron-down nav-arrow"></i>
       </a>
       <div class="submenu">
-        <a href="{{ url_for('staff_account.list_staff') }}" class="submenu-item">Users</a>
+        <a href="{{ url_for('staff_account.list_staff') }}" class="submenu-item">Personal y Usuarios</a>
       </div>
 
       <a href="{{ url_for('auth.logout') }}">
         <i class="fas fa-sign-out-alt"></i>
-        Logout
+        Cerrar Sesión
       </a>
     {% endif %}
   </nav>
