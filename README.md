@@ -13,7 +13,7 @@ El sistema permite administrar el ciclo hídrico completo de operaciones privada
 
 ---
 
-## 🚀 Requisitos Previos
+## Requisitos Previos
 
 - Python 3.10 o superior (compatible con Python 3.12 y 3.13)
 - Git
@@ -21,7 +21,7 @@ El sistema permite administrar el ciclo hídrico completo de operaciones privada
 
 ---
 
-## 🛠️ Instalación y Puesta en Marcha Local
+## Instalación y Puesta en Marcha Local
 
 ### 1. Clonar el repositorio
 ```bash
@@ -60,7 +60,7 @@ Abre en tu navegador: `http://127.0.0.1:5000`
 
 ---
 
-## 🔐 Credenciales Precargadas para Evaluación
+##  Credenciales Precargadas para Evaluación
 
 | Rol | Usuario | Contraseña | Perfil |
 | :--- | :--- | :--- | :--- |
@@ -69,38 +69,7 @@ Abre en tu navegador: `http://127.0.0.1:5000`
 | **Logística Pipas** | `logistica_pipas` | `Pipas2026!` | Control de distribución y lecturas de medidores |
 | **Cajero / Cobranza** | `cajero_servitab` | `CajaServitab2026!` | Emisión de comprobantes y cobro de recibos |
 
----
 
-## ⚙️ Variables de Entorno (Producción)
-
-Crea un archivo `.env` en la raíz del proyecto para producción:
-
-```env
-SECRET_KEY=clave_secreta_de_produccion_muy_segura
-USE_MYSQL=true
-MYSQL_HOST=localhost
-MYSQL_PORT=3306
-MYSQL_USER=usuario_servitab
-MYSQL_PASSWORD=password_seguro
-MYSQL_DB=servitab_water
-WATER_RATE_PER_M3=18.50
-DEFAULT_CURRENCY=MXN
-```
-
-O para PostgreSQL:
-```env
-DATABASE_URL=postgresql+psycopg2://usuario:password@localhost:5432/servitab_water
-```
-
----
-
-## 🐳 Despliegue con Docker y Gunicorn
-
-El sistema está listo para ejecutarse en entornos contenerizados con servidores WSGI de grado de producción:
-
-```bash
-gunicorn -w 4 -b 0.0.0.0:8000 "app:create_app()"
-```
 
 ---
 
